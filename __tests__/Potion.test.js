@@ -1,31 +1,23 @@
 
+const Potion = require('../lib/Potion.js');
+
+jest.mock('../lib/Potion.js');
+
+console.log(new Potion());
+
 
 test('creates a health potion object', () => {
-    const potion = new Potion('health');
+  const potion = new Potion('health');
 
-    expect(potion.name).toBe('health');
-    expect(potion.value).toEqual(expect.any(Number));
+  expect(potion.name).toBe('health');
+  expect(potion.value).toEqual(expect.any(Number));
 });
 
+test('creates a random potion object', () => {
+  const potion = new Potion();
 
-function Potion(name) {
-    this.types = ['strength', 'agility', 'health'];
-    this.name = name || this.types[Math.floor(Math.random() * this.types.length)];
-  
-    if (this.name === 'health') {
-      this.value = Math.floor(Math.random() * 10 + 30);
-    } else {
-      this.value = Math.floor(Math.random() * 5 + 7);
-    }
-  }
-  
-  module.exports = Potion;
-
-
-  test('creates a random potion object', () => {
-    const potion = new Potion();
-
-    expect(potion.name).toEqual(expect.any(String));
-    expect(potion.name.length).toBeGreaterThan(0);
-    expect(potion.value).toEqual(expect.any(Number));
+  expect(potion.name).toEqual(expect.any(String));
+  expect(potion.name.length).toBeGreaterThan(0);
+  expect(potion.value).toEqual(expect.any(Number));
 });
+
